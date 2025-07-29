@@ -1,7 +1,6 @@
 from django.db import models
 
-# Create your models here.
-
+# Create the Movie model with the required fields
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
