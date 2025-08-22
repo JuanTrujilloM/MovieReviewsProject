@@ -1,2 +1,3 @@
 *.pyc
 movies_initial.csv
+db.sqlite3
