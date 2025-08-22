@@ -1,23 +1,9 @@
-<!--Create the conecction with Bootstrap and CSS ans System of Filter movies and displays in the home Page-->
-<head>
-  <title>Home - Movie Reviews</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <style>
-    .poster {
-      width: 100%;
-      height: 700px;
-      object-fit: cover;
-      object-position: center;
-    }
+{% extends 'base.html' %}
+{% block content %}
 
-    body {
-      padding: 2rem;
-      background-color: #6ae6ff;
-    }
-    
-  </style>
-</head>
-<center><h1>Welcome to Home Page, <span style="color:#2A77DB">{{name}}</span></h1></center>
+<br>
+<!--Create the conecction with Bootstrap and CSS ans System of Filter movies and displays in the home Page-->
+<center><h1>Welcome to Home Page, <span style="color:#ffffff">{{name}}</span></h1></center>
 
 <div class="container">
   <form action="">
@@ -39,6 +25,7 @@
   <center>
     <h4>Searching for {{searchTerm}}</h4>
   </center>
+
   <div class="row row-cols-1 row-cols-md-3 g-4">
      {% for movie in movies %}
       <div class="col">
@@ -47,6 +34,8 @@
           <div class="card-body">
             <h5 class="card-title fw-bold">{{ movie.title }}</h5>
             <p class="card-text">{{ movie.description }}</p>
+            <p class="card-text">{{ movie.genre }}</p>
+            <p class="card-text"><small class="text-muted">{{ movie.year }}</small></p>
             {% if movie.url %}
               <a href="{{ movie.url }}" class="btn btn-primary">Movie Link</a>
             {% endif %}
@@ -55,5 +44,19 @@
       </div>
     {% endfor %}
   </div>
+  <br>
+  <br>
+  <br>
+  <center><div>
+    <h2>Join our mailing list: </h2>
+    <form action="{% url 'signup' %}">
+      <div class="mb-3">
+        <label for="email" class="form-label"> Enter your email: </label>
+        <input type="email" class="form-control" name="email">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div></center>
 </div>
 <br>
+{% endblock content %}
